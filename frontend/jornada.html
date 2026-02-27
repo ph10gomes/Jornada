@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Report Jornada</title>
+  <link rel="stylesheet" href="style.css">
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <!-- Seu script -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="top-bar">
+  <h1>REPORT JORNADA</h1>
+</header>
+
+<!-- FILTROS -->
+<section class="sub-header filtros-topo">
+
+    <!-- UO -->
+    <div class="filtro">
+        <label class="label">UO:</label>
+        <select id="filtroUO">
+            <option value="">GERAL</option>
+        </select>
+    </div>
+
+    <!-- SUPERVISOR --> 
+    <div class="filtro">
+        <label class="label">SUPERVISOR:</label>
+        <select id="filtroSupervisor">
+            <option value="">TODOS</option>
+        </select>
+    </div>
+  <!-- SUPERVISOR --> 
+    <div class="filtro">
+        <label class="label">LÍDER DE POSTO:</label>
+        <select id="filtroLider">
+            <option value="">TODOS</option>
+        </select>
+    </div>
+
+    <div class="filtro">
+        <label class="label">CONTROLADOR:</label>
+        <select id="filtroControlador">
+            <option value="">TODOS</option>
+        </select>
+    </div>
+
+    <!-- DATA ANALISADA -->
+    <div class="filtro">
+        <label class="label">DATA:</label>
+        <input type="date" id="filtroDataAnalisada">
+    </div>
+ <div class="filtro">
+        <label class="label">TURNO:</label>
+        <select id="filtroTurno">
+            <option value="">TODOS</option>
+        </select>
+    </div>
+   
+
+</section>
+
+<!-- KPI CARDS -->
+<section class="kpis">
+
+  <div class="kpi-item">
+    <span class="kpi-title">TOTAL DE EQP. DIA</span>
+    <div class="kpi-box" id="kpiTotalEqpDia"></div>
+  </div>
+ <div class="kpi-item">
+    <span class="kpi-title">TOTAL DE EQP.<br>EFETIVA DIA</span>
+    <div class="kpi-box" id="kpiTotalEqpEfetivaDia"></div>
+  </div>
+
+
+
+  <div class="kpi-item">
+    <span class="kpi-title">
+      TOTAL DE EQP. <span class="red">D</span> DIA
+    </span>
+    <div class="kpi-box" id="kpiTotalEqpDDia"></div>
+  </div>
+  
+
+  <div class="kpi-item">
+    <span class="kpi-title">% EQP. 
+      <span class="red">D</span>
+    </span>
+    <div class="kpi-box" id="kpiPercEqpD"></div>
+  </div>
+    <div class="kpi-item">
+    <span class="kpi-title">EQPS. JORNADA NÃO<br>INICIADA</span>
+    <div class="kpi-box" id="kpiEqpAtivas"></div>
+  </div>
+
+  <div class="kpi-item">
+    <span class="kpi-title">ATRASO INÍCIO JORNADA</span>
+    <div class="kpi-box" id="kpiAtrasoInicio"></div>
+  </div>
+
+  <div class="kpi-item">
+    <span class="kpi-title">DEMORA 1º ATEND.</span>
+    <div class="kpi-box" id="kpiDemoraAtend"></div>
+  </div>
+
+  <div class="kpi-item">
+    <span class="kpi-title1">
+      DESVIO ULT.ATEND.<br>FIM DE JORNADA
+    </span>
+    <div class="kpi-box" id="kpiDesvioUltAtend"></div>
+  </div>
+
+  <div class="kpi-item">
+    <span class="kpi-title2">
+      JORNADA PROD. INCOMPLETA &lt; (7:00)
+    </span>
+    <div class="kpi-box" id="kpiJornadaIncompleta"></div>
+  </div>
+
+</section>
+
+<!-- TABELA -->
+<section class="table-section">
+  <table id="tabelaRelatorio">
+    <thead>
+      <tr>
+        <th>EQUIPES</th>
+        <th>INÍCIO JORNADA</th>
+        <th>STATUS INÍCIO</th>
+        <th>1º ATEND.</th>
+        <th>STATUS 1º</th>
+        <th>INÍCIO REFEIÇÃO</th>
+        <th>TÉRMINO REFEIÇÃO</th>
+        <th>STATUS REFEIÇÃO</th>
+        <th>ÚLTIMO SERV.</th>
+        <th>STATUS FINAL</th>
+        <th>JORNADA</th>
+        <th>STATUS</th>
+        <th>JUSTIFICATIVA</th>
+      </tr>
+    </thead>
+
+    <!-- 👇 O JS VAI PREENCHER AQUI -->
+    <tbody id="tbodyTabela">
+      <!-- linhas geradas dinamicamente -->
+    </tbody>
+  </table>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-left">
+    <p>Nosso Compromisso está com a Entrega, Segurança e Redução do CHI</p>
+    <strong>NCSR ENERGIA</strong>
+  </div>
+  <div class="footer-right">
+    <img src="Imagens/ChatGPT Image 20 de fev. de 2026, 09_50_18.jpeg" alt="Logo-PCP" srcset="">
+  </div>
+</footer>
+
+</body>
+</html>

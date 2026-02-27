@@ -1,0 +1,212 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f4;
+}
+
+/* HEADER */
+.top-bar {
+  background: #156082;
+  color: #b9e89b;
+  text-align: center;
+  padding: 14px;
+}
+
+/* SUB HEADER */
+.sub-header{
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 5px;
+}
+.sub-header input{
+    background: #e0e0e0;
+    border: none;
+    padding: 5px;
+}
+.label{
+
+    font-size: 15px;
+    font-weight: bold;
+}
+.filtro>select{
+font-size: 15px;
+ 
+}
+.filtro>input{
+font-size: 15px;
+
+}
+
+.dates {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 0px;
+    font-size: 15px;
+}
+
+.dates input {
+    background: #e0e0e0;
+    border: none;
+    padding: 5px;
+    
+}
+.kpis {
+  display: flex;
+  justify-content: space-between; /* espalha em 1 linha */
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+}
+
+.kpi-item {
+  flex: 1;
+  max-width: 140px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kpi-item .kpi-box {
+  background: #d9d9d9;
+  color: #444;
+}
+
+.kpi-item.ativa .kpi-box {
+  background: #6b6b6b;
+  color: #fff;
+}
+
+.kpi-item.ativa {
+  
+  transform: translateY(-2px);
+}
+
+.kpi-title,
+.kpi-title1,
+.kpi-title2 {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #000;
+  line-height: 1.15;
+  min-height: 26px;     /* mantém títulos alinhados */
+}
+
+.kpi-box {
+  background: #d9d9d9;
+  border-radius: 14px;
+  height: 65px;         /* MENOR */
+  font-size: 22px;      /* MENOR */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+}
+
+
+/* Destaque letra D em vermelho */
+.red {
+  color: red;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .kpi-box {
+    height: 80px;
+    font-size: 34px;
+  }
+}
+
+
+/* TABLE */
+.table-section {
+  padding: 0 20px 20px;
+  overflow-x: auto;
+   max-height: 455px;          /* 15 linhas x 40px */
+  
+ 
+}
+/* Cabeçalho fixo */
+.table-section thead th {
+  position: sticky;
+  top: 0;
+  background: #156082;     /* importante p/ não ficar transparente */
+  z-index: 3;
+}
+/* opcional – deixa mais bonito */
+.table-section table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.table-section th,
+.table-section td {
+  padding: 8px;
+  white-space: nowrap;
+}
+/* Primeira coluna (EQUIPES) alinhada à esquerda */
+
+#tabelaRelatorio td:first-child {
+  text-align: left;
+}
+
+table {
+ width: 100%;
+ border-collapse: collapse; /* mantém tudo organizado */
+    
+}
+thead{
+    background:#2f5597;
+    color:#fff;
+    font-size: 12px;
+}
+  
+ th, td {
+    padding: 8px 14px; /* ↑↓  ←→ */
+    text-align: center;
+    white-space: nowrap; /* evita quebrar texto */
+    font-size: 11px;
+  }
+
+/* STATUS COLORS */
+.status-normal { background: #a9d18e; }
+.status-inc { background: #ff4c4c; color: #fff; }
+.status-nao { background: #c9b7e2; }
+
+/* FOOTER */
+.footer {
+  background: #0b3f6f;
+  color: #fff;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer strong {
+  font-size: 18px;
+}
+
+img { 
+    width: 100px;
+    height: 70PX;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
+}
