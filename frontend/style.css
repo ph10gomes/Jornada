@@ -199,9 +199,8 @@ thead{
 
 img { 
     width: 100px;
-    height: 70PX;
-}
-
+    height: 70PX;}
+    .status-atrasado { background: #e74c3c; color: #fff; font-weight: 700; }
 /* RESPONSIVO */
 @media (max-width: 768px) {
   .footer {

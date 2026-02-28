@@ -189,16 +189,21 @@ function valor(id) {
 // ✅ Corrigida: extrai HH:MM de "24/02/2026 05:06" ou retorna HH:MM se já vier assim
 function hora(v) {
   if (!v) return "";
-  const s = String(v);
-  const m = s.match(/\b(\d{2}):(\d{2})\b/);
-  return m ? `${m[1]}:${m[2]}` : "";
-}
 
+  const s = String(v);
+
+  // pega HH:MM de "24/02/2026 05:06"
+  const m = s.match(/\b(\d{2}):(\d{2})\b/);
+  if (m) return `${m[1]}:${m[2]}`;
+
+  return "";
+}
 function classe(v) {
   if (!v) return "";
   v = String(v).toUpperCase();
+
+  if (v.includes("ATRAS")) return "status-atrasado"; // 🔥 importante
   if (v.includes("OK") || v.includes("NORMAL")) return "status-normal";
   if (v.includes("NÃO") || v.includes("NAO")) return "status-nao";
-  if (v.includes("D") || v.includes("INC")) return "status-inc";
   return "";
 }
