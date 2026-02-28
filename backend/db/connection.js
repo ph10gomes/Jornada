@@ -4,7 +4,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: '@029907',
-  database: 'jornada_db',
+  database: 'jornada', // <-- aqui
   waitForConnections: true,
   connectionLimit: 10
 });

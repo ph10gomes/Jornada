@@ -4,28 +4,52 @@ const db = require('../db/connection');
 
 /* ===============================
    GET /jornadas
-   Busca jornadas do dia atual
+   Lista todas as jornadas
+   Pode filtrar por data ?data=24/02/2026
 ================================ */
+
 router.get('/', async (req, res) => {
   try {
-    const data = req.query.data || new Date().toISOString().split('T')[0];
+    const [rows] = await db.query(`
+      SELECT
+        NOME_EQUIPE,
+        COD_UO,
+        SUPERVISOR_EQUIPE,
+        LIDER_CONTROLADOR,
+        NOME_CONTROLADOR,
+        HORA,
 
-    const [rows] = await db.query(
-      "SELECT * FROM jornadas WHERE DATA = ?",
-      [data]
-    );
+        DATE_FORMAT(STR_TO_DATE(INICIO_JORNADA, '%d/%m/%Y %H:%i'), '%H:%i') AS INICIO_JORNADA,
+        DATE_FORMAT(STR_TO_DATE(PRIMEIRO_ATENDIMENTO, '%d/%m/%Y %H:%i'), '%H:%i') AS PRIMEIRO_ATENDIMENTO,
+        DATE_FORMAT(STR_TO_DATE(INI_REFEICAO, '%d/%m/%Y %H:%i'), '%H:%i') AS INICIO_REFEICAO,
+        DATE_FORMAT(STR_TO_DATE(FIM_REFEICAO, '%d/%m/%Y %H:%i'), '%H:%i') AS TERMINO_REFEICAO,
+        DATE_FORMAT(STR_TO_DATE(ULTIMO_ATENDIMENTO, '%d/%m/%Y %H:%i'), '%H:%i') AS ULTIMO_ATENDIMENTO,
+        DATE_FORMAT(STR_TO_DATE(FIM_JORNADA, '%d/%m/%Y %H:%i'), '%H:%i') AS FIM_JORNADA,
+
+        STATUS_INICIO,
+        STATUS_PRIMEIRO,
+        STATUS_REFEICAO,
+        STATUS_FINAL,
+        STATUS_JORNADA,
+        JORNADA,
+        data_nova
+      FROM jornadas
+      LIMIT 5000
+    `);
 
     res.json(rows);
-  } catch (err) {
-    console.error('Erro no GET /jornadas:', err);
-    res.status(500).json({ erro: 'Erro ao buscar jornadas' });
+  } catch (error) {
+    console.error('Erro no GET /jornadas:', error);
+    res.status(500).json({ erro: error.message });
   }
 });
+
 
 /* ===============================
    POST /jornadas
    Insere nova jornada
 ================================ */
+
 router.post('/', async (req, res) => {
   try {
     const {
@@ -80,9 +104,9 @@ router.post('/', async (req, res) => {
 
     res.status(201).json({ status: 'Jornada inserida com sucesso' });
 
-  } catch (err) {
-    console.error('Erro no POST /jornadas:', err);
-    res.status(500).json({ erro: 'Erro ao inserir jornada' });
+  } catch (error) {
+    console.error('Erro no POST /jornadas:', error);
+    res.status(500).json({ erro: error.message });
   }
 });
 
